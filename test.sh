@@ -13,7 +13,7 @@ bearer_token=$(curl -X POST "https://iam.cloud.ibm.com/identity/token" -H "Conte
 
 echo "#####################"
 
-curl -X GET --location "${url}//test-database" \
+curl -X GET --location "${url}/test-database" \
 --header 'Content-Type: application/json' \
 --header "Authorization: Bearer ${bearer_token}" \
 --data '{
