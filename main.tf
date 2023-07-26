@@ -39,12 +39,12 @@ resource "ibm_cloudant_database" "cloudant_database" {
 }
 
 locals {
-  url = jsondecode(ibm_resource_key.service_creds.credentials_json)
+  service_creds = jsondecode(ibm_resource_key.service_creds.credentials_json)
 }
 
 resource null_resource "perform_db_post" {
     depends_on = [ local.url , ibm_cloudant_database.cloudant_database ]
     provisioner "local-exec" {
-    command = "bash test.sh ${var.ibmcloud_api_key_demo} ${local.url["url"]}"
+    command = "bash test.sh ${local.service_creds["apikey"] ${local.service_creds["url"]}"
     }
 }
