@@ -43,7 +43,7 @@ locals {
 }
 
 resource null_resource "perform_db_post" {
-    depends_on = [ local.url , ibm_cloudant_database.cloudant_database ]
+    depends_on = [ local.service_creds , ibm_cloudant_database.cloudant_database ]
     provisioner "local-exec" {
     command = "bash test.sh ${local.service_creds["apikey"]} ${local.service_creds["url"]}"
     }
